@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMoralis } from "react-moralis";
 
-import { cknftInfo } from "../../lib/cknftInfo";
+import {cknftInfo1} from "../../lib/cknftInfo1";
 
 import MintCard from "../cknftCard/MintCard";
 import MintModal from "./MintModal";
@@ -32,7 +32,7 @@ const Mint = (props) => {
 
       {showMintModal && (
         <MintModal
-          CKNFT={cknftInfo[selectedCknft]}
+          CKNFT={cknftInfo1[selectedCknft]}
           numAlreadyMinted={existingCknftSupply[selectedCknft]}
           mint={mint}
           walletWaitingOnUser={walletWaitingOnUser}
@@ -59,7 +59,7 @@ const Mint = (props) => {
           )}
 
           <div className="custom-mint-card-div">
-            {cknftInfo.map((CKNFT, index) => (
+            {cknftInfo1.map((CKNFT, index) => (
               <MintCard
                 key={index}
                 CKNFT={CKNFT}

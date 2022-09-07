@@ -2,13 +2,16 @@ import Logo from "../../img/Logo.png";
 import CknftAttribute from "./CknftAttribute";
 
 import cknft_0Img from "../../img/cknft_img/cknft-0.png";
-import cknft_1Img from "../../img/cknft_img/cknft-1.gif";
+import cknft_1Img from "../../img/cknft_img/cknft-1.mp4";
 
 import { CKNFT_ADDRESS, CORRECT_CHAIN_ID, NAME_CHAIN_ID, OPENSEA_URL } from "../../lib/constants";
 
-const fallBackImages = {
+const fallBackImages0 = {
   cknft_0Img, 
-  cknft_1Img,  
+};
+
+const fallBackImages1 = {
+  cknft_1Img, 
 };
 
 const CknftCard = ({ cknftDetails }) => {
@@ -24,7 +27,7 @@ const CknftCard = ({ cknftDetails }) => {
               src={imgURI}
               onError={(e) => {
                 e.target.onerror = null;
-                e.target.src = fallBackImages[cknftDetails.uriJSON.name];
+                e.target.src = fallBackImages1[cknftDetails.uriJSON.name];
               }}
             />
           </figure>
@@ -45,9 +48,9 @@ const CknftCard = ({ cknftDetails }) => {
 
           <p className="has-text-left mt-0 mb-3 is-size-7">{cknftDetails.uriJSON.description}</p>
           <div className="content field is-grouped is-flex">
-            <CknftAttribute metadata={cknftDetails.uriJSON} traitNum={0} />
-            <CknftAttribute metadata={cknftDetails.uriJSON} traitNum={1} />
-            <CknftAttribute metadata={cknftDetails.uriJSON} traitNum={2} />            
+            <CknftAttribute metadata1={cknftDetails.uriJSON} traitNum={0} />
+            <CknftAttribute metadata1={cknftDetails.uriJSON} traitNum={1} />
+            <CknftAttribute metadata1={cknftDetails.uriJSON} traitNum={2} />            
           </div>
           <a
             href={`${OPENSEA_URL}/assets/${NAME_CHAIN_ID}/${CKNFT_ADDRESS}/${cknftDetails.tokenId}`}
@@ -58,7 +61,7 @@ const CknftCard = ({ cknftDetails }) => {
             view on opensea
           </a>
         </div>
-      </div>
+      </div>      
     </>
   );
 };

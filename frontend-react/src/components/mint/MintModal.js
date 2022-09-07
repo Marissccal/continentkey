@@ -16,7 +16,7 @@ const MintModal = ({
   awaitingNewlyMintedCknft,
   transactionHash,
 }) => {
-  const style = { backgroundColor: `#${CKNFT.metadata.background_color}` };
+  const style = { backgroundColor: `#${CKNFT.metadata1.background_color}` };
 
   const [counter, setCounter] = useState(0);
 
@@ -40,17 +40,17 @@ const MintModal = ({
       <div id="modal" className="modal is-active">
         <div className="modal-background" onClick={closeModal}></div>
         <div className="modal-content custom-reveal-animation ">
-          <div className="box " style={style}>
+          <div className="box ">
             <div className="has-text-centered">
               <p className="is-size-2 is-size-4-mobile">
-                <span className="is-capitalized">{CKNFT.metadata.attributes[1].value}</span> the{" "}
-                <span className="is-capitalized">{CKNFT.metadata.name}</span>
+                <span className="is-capitalized">{CKNFT.metadata1.attributes[1].value}</span> the{" "}
+                <span className="is-capitalized">{CKNFT.metadata1.name}</span>
               </p>
               <p>
                 {numAlreadyMinted} / {CKNFT.maxSupply} already minted
               </p>
             </div>
-            <img className="custom-mint-modal-image" src={CKNFT.image}></img>
+            <img className="custom-mint-modal-image" src={CKNFT.image1}></img>
             <div className="is-flex is-flex-direction-column is-align-items-center">
               <div className="is-flex is-justify-content-center is-align-items-center">
                 <button

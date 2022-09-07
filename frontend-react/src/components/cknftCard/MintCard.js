@@ -1,14 +1,21 @@
 import { useMoralis } from "react-moralis";
-
+//import styled from "styled-components";
+import React, { useState } from "react";
+import ReactPlayer from "react-player";
 import Logo from "../../img/Logo.png";
 import CknftAttribute from "./CknftAttribute";
 
 import { CORRECT_CHAIN_ID, NAME_CHAIN_ID, CKNFT_ADDRESS, OPENSEA_URL } from "../../lib/constants";
 
 const MintCard = ({ CKNFT, existingCKNFTSupply, setSelectedCknft, setShowMintModal }) => {
-  const style = { backgroundColor: `#${CKNFT.metadata.background_color}` };
+  const style = { backgroundColor: `#${CKNFT.metadata1.background_color}` };
 
   const { isWeb3Enabled, chainId } = useMoralis();
+
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const onLoadedData = () => {
+    setIsVideoLoaded(true);
+  };  
 
   function handleMintClick() {
     if (!isWeb3Enabled) return;
@@ -20,17 +27,28 @@ const MintCard = ({ CKNFT, existingCKNFTSupply, setSelectedCknft, setShowMintMod
     <>
       <div className={`card custom-card`}>
         <div className={`card-image`}>
-          <figure
-            style={style}
-            className={`image is-4by4 ${
-              existingCKNFTSupply && existingCKNFTSupply[CKNFT.tokenId] - CKNFT.maxSupply === 0
-                ? "custom-sold-out"
-                : ""
-            }`}
-          >
-            <img src={CKNFT.image} />
+          <figure>            
+            <img               
+              className={`video-thumb tiny ${
+                existingCKNFTSupply && existingCKNFTSupply[CKNFT.tokenId] - CKNFT.maxSupply === 0
+                  ? "custom-sold-out"
+                  : ""
+              }`}
+              alt="thumb"
+              style={{ opacity: isVideoLoaded ? 0 : 1 }}
+            />
+            <div style={{ opacity: isVideoLoaded ? 1 : 0 }}>
+              <ReactPlayer
+                url={CKNFT.image1}
+                playing={true}
+                controls={true}
+                loop={true}
+                muted={true}
+                playsinline={true}
+                onReady={onLoadedData}
+              />
+            </div>            
           </figure>
-
           {isWeb3Enabled &&
             chainId === CORRECT_CHAIN_ID &&
             (existingCKNFTSupply ? (
@@ -66,17 +84,17 @@ const MintCard = ({ CKNFT, existingCKNFTSupply, setSelectedCknft, setShowMintMod
               </figure>
             </div>
             <div className="media-left has-text-left">
-              <p className="title is-4 mb-0 is-capitalized">{CKNFT.metadata.name}</p>
+              <p className="title is-4 mb-0 is-capitalized">{CKNFT.metadata1.name}</p>
               <p className="">{`Token ID: ${CKNFT.tokenId}`}</p>
             </div>
           </div>
 
-          <p className="has-text-left mt-0 mb-3 is-size-7">{CKNFT.metadata.description}</p>
+          <p className="has-text-left mt-0 mb-3 is-size-7">{CKNFT.metadata1.description}</p>
 
           <div className="content field is-grouped is-flex">
-            <CknftAttribute metadata={CKNFT.metadata} traitNum={0} />
-            <CknftAttribute metadata={CKNFT.metadata} traitNum={1} />
-            <CknftAttribute metadata={CKNFT.metadata} traitNum={2} />            
+            <CknftAttribute metadata1={CKNFT.metadata1} traitNum={0} />
+            <CknftAttribute metadata1={CKNFT.metadata1} traitNum={1} />
+            <CknftAttribute metadata1={CKNFT.metadata1} traitNum={2} />            
           </div>
           <a
             href={`${OPENSEA_URL}/assets/${NAME_CHAIN_ID}/${CKNFT_ADDRESS}/${CKNFT.tokenId}`}
@@ -87,9 +105,11 @@ const MintCard = ({ CKNFT, existingCKNFTSupply, setSelectedCknft, setShowMintMod
             view on opensea
           </a>
         </div>
-      </div>
+      </div>      
     </>
   );
 };
 
+
 export default MintCard;
+
