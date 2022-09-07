@@ -1,5 +1,6 @@
 import { useMoralis } from "react-moralis";
-
+import React, { useState } from "react";
+import ReactPlayer from "react-player";
 import Logo from "../../img/Logo.png";
 import CknftAttribute from "./CknftAttribute";
 
@@ -9,6 +10,11 @@ const MintCard = ({ CKNFT, existingCKNFTSupply, setSelectedCknft, setShowMintMod
   const style = { backgroundColor: `#${CKNFT.metadata.background_color}` };
 
   const { isWeb3Enabled, chainId } = useMoralis();
+
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const onLoadedData = () => {
+    setIsVideoLoaded(true);
+  };  
 
   function handleMintClick() {
     if (!isWeb3Enabled) return;
@@ -20,15 +26,27 @@ const MintCard = ({ CKNFT, existingCKNFTSupply, setSelectedCknft, setShowMintMod
     <>
       <div className={`card custom-card`}>
         <div className={`card-image`}>
-          <figure
-            style={style}
-            className={`image is-4by4 ${
-              existingCKNFTSupply && existingCKNFTSupply[CKNFT.tokenId] - CKNFT.maxSupply === 0
-                ? "custom-sold-out"
-                : ""
-            }`}
-          >
-            <img src={CKNFT.image} />
+          <figure>            
+            <img               
+              className={`video-thumb tiny ${
+                existingCKNFTSupply && existingCKNFTSupply[CKNFT.tokenId] - CKNFT.maxSupply === 0
+                  ? "custom-sold-out"
+                  : ""
+              }`}
+              alt="thumb"
+              style={{ opacity: isVideoLoaded ? 0 : 1 }}
+            />
+            <div style={{ opacity: isVideoLoaded ? 1 : 0 }}>
+              <ReactPlayer
+                url={CKNFT.image1}
+                playing={true}
+                controls={true}
+                loop={true}
+                muted={true}
+                playsinline={true}
+                onReady={onLoadedData}
+              />
+            </div>            
           </figure>
 
           {isWeb3Enabled &&
