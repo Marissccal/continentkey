@@ -1,14 +1,9 @@
 import Logo from "../../img/Logo.png";
 import CknftAttribute from "./CknftAttribute";
 
-import cknft_0Img from "../../img/cknft_img/cknft-0.png";
 import cknft_1Img from "../../img/cknft_img/cknft-1.mp4";
 
-import { CKNFT_ADDRESS, CORRECT_CHAIN_ID, NAME_CHAIN_ID, OPENSEA_URL } from "../../lib/constants";
-
-const fallBackImages0 = {
-  cknft_0Img, 
-};
+import { CKNFT_ADDRESS, NAME_CHAIN_ID, OPENSEA_URL } from "../../lib/constants";
 
 const fallBackImages1 = {
   cknft_1Img, 

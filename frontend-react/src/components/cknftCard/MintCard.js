@@ -8,7 +8,7 @@ import CknftAttribute from "./CknftAttribute";
 import { CORRECT_CHAIN_ID, NAME_CHAIN_ID, CKNFT_ADDRESS, OPENSEA_URL } from "../../lib/constants";
 
 const MintCard = ({ CKNFT, existingCKNFTSupply, setSelectedCknft, setShowMintModal }) => {
-  const style = { backgroundColor: `#${CKNFT.metadata1.background_color}` };
+  //const style = { backgroundColor: `#${CKNFT.metadata1.background_color}` };
 
   const { isWeb3Enabled, chainId } = useMoralis();
 

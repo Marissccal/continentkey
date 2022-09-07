@@ -40,7 +40,7 @@ const MintModal = ({
       <div id="modal" className="modal is-active">
         <div className="modal-background" onClick={closeModal}></div>
         <div className="modal-content custom-reveal-animation ">
-          <div className="box ">
+          <div className="box " style={style}>
             <div className="has-text-centered">
               <p className="is-size-2 is-size-4-mobile">
                 <span className="is-capitalized">{CKNFT.metadata1.attributes[1].value}</span> the{" "}
