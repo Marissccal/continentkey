@@ -1,0 +1,20 @@
+{
+  "name": "cknft-1",
+  "description": "Lorem ipsum",
+  "image": "ipfs://QmQGh7hBsWQwbTbcD8bAaysrKBRskZ1iuumbvYBLunMrAN",
+  "background_color": "c2ffff",
+  "attributes": [
+    {
+      "trait_type": "class",
+      "value": "cknft-1"
+    },
+    {
+      "trait_type": "preferred name",
+      "value": "Lorem ipsum"
+    },
+    {
+      "trait_type": "symbol",
+      "value": 2
+    }
+  ]
+}

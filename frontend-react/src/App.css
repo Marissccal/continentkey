@@ -1,0 +1,377 @@
+.background {
+  background: url(./img/background.svg) no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.new-CKNFT-background {
+  background: url(./img/background.svg) no-repeat center center fixed !important;
+  background-size: cover;
+  width: 100%;
+}
+
+.shizuru {
+  font-family: "Shizuru", cursive;
+  font-size: 3rem;
+}
+
+.indie-flower {
+  font-family: "Indie Flower", cursive;
+}
+
+.custom-word-wrap {
+  word-wrap: break-word;
+}
+
+.logo {
+  width: 100px;
+}
+
+.custom-position-chain-warning {
+  position: fixed;
+  width: 100%;
+  z-index: 100000;
+}
+
+.custom-position-absolute-warning {
+  position: fixed;
+
+  width: 100%;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  z-index: 100000;
+}
+
+.custom-position-absolute-warning::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  width: 100%;
+  background-color: white !important;
+  animation: countdown 5s linear infinite;
+}
+
+.custom-about-reel-img {
+  width: 80px;
+}
+
+.custom-about-supply-div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  font-size: 0.8em;
+  justify-content: center;
+}
+
+.custom-about-supply {
+  border: 1px solid black;
+  display: flex;
+  gap: 1em;
+  padding: 0.8em;
+  border-radius: 1em;
+  /* width: 10em; */
+}
+
+@keyframes countdown {
+  100% {
+    width: 0;
+  }
+}
+
+.custom-reveal-animation {
+  animation: info-reveal 150ms ease-in-out;
+}
+
+@keyframes info-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.custom-no-scroll {
+  overflow: hidden;
+}
+
+.custom-wallet-btns-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  margin-top: 2rem;
+}
+.custom-connect-btn {
+  width: 400px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.custom-connect-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border: 2px solid hsla(308, 100%, 88%, 0.7);
+  border-radius: 3px;
+  background-color: hsla(308, 100%, 88%, 0.1);
+  width: 175px;
+  padding: 0.2em 0.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.custom-connect-status:hover {
+  cursor: pointer;
+  border: 3px solid hsla(308, 100%, 88%, 1);
+  background-color: hsla(308, 100%, 88%, 0.1);
+}
+
+.custom-connect-status__network {
+  font-size: 0.5rem;
+}
+
+.custom-connect-status__account {
+  font-size: 0.7rem;
+}
+
+.custom-about-img {
+  width: 450px;
+}
+
+.custom-about-text {
+  width: 600px;
+}
+
+.custom-details-list li {
+  list-style-type: disc;
+  margin-left: 2em;
+}
+
+.custom-mint-card-div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3em;
+  justify-content: center;
+  align-items: right;
+}
+
+.custom-mint-button {
+  --size: 75px;
+  position: absolute;
+  left: 72%;
+  top: 103%;
+  border-color: black !important;
+  height: var(--size);
+  width: var(--size);
+  border-radius: 50%;
+  font-family: inherit;
+}
+
+.custom-mint-button:hover {
+  border-color: #999 !important;
+  color: #999;
+}
+
+.custom-num-minted {
+  position: absolute;
+  top: 0.3em;
+  right: 0.8em;
+}
+
+.custom-mint-modal-image {
+  width: 80%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+}
+
+.custom-counter-btn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.custom-counter-btn:hover {
+  opacity: 0.5;
+}
+
+.custom-counter-btn:focus:not(:active) {
+  border: none;
+  box-shadow: none;
+}
+
+.custom-hidden {
+  display: none;
+}
+
+.custom-sold-out {
+  opacity: 0.2;
+}
+
+.custom-show-mint {
+  opacity: 0.2;
+}
+
+.custom-mint-wait-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.custom-wallet-minting {
+  position: absolute !important;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-gallery-gap {
+  gap: 1rem;
+}
+
+.custom-card {
+  width: 350px;
+}
+
+.custom-attribute {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 0.2rem;
+  padding: 0.25em 0.5em;
+}
+
+.custom-attribute__trait {
+  font-size: 0.6rem;
+  /* font-size: 0.8rem; */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.custom-attribute__value {
+  font-size: 0.7rem;
+  /* font-size: 0.9rem; */
+  text-transform: capitalize;
+}
+
+.custom-opensea-link {
+  position: absolute;
+  top: 1.3em;
+  right: 0.8em;
+}
+
+@media screen and (max-width: 500px) {
+  .custom-connect-btn {
+    width: 90%;
+  }
+
+  .custom-nav-img {
+    width: 50px !important;
+  }
+
+  .custom-about-reel-img {
+    width: 50px;
+  }
+
+  .custom-about-text {
+    width: 100%;
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+  }
+
+  .custom-mint-box-mobile {
+    padding-bottom: 0rem !important;
+  }
+  .custom-new-CKNFT-mobile {
+    width: 70%;
+  }
+
+  .custom-about-supply-div {
+    font-size: 0.6em;
+    justify-content: flex-start;
+  }
+
+  .custom-about-supply {
+    border: 1px solid black;
+    display: flex;
+    gap: 1em;
+    padding: 0.8em;
+    border-radius: 1em;
+    /* width: 10em; */
+  }
+
+  .custom-smaller-padding-mobile {
+    padding-bottom: 1rem !important;
+  }
+
+  .custom-about-img {
+    width: 300px;
+    /* width: 80%; */
+  }
+
+  .custom-mobile-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .custom-smaller-mobile-text {
+    font-size: 0.9rem;
+  }
+
+  .custom-mobile-img {
+    width: 70px !important;
+  }
+
+  .custom-mobile-margin {
+    margin-bottom: 0 !important;
+  }
+
+  .custom-mobile-metamask-fox {
+    display: flex;
+    align-items: center;
+    width: 70px !important;
+  }
+
+  .shizuru {
+    font-size: 2rem;
+  }
+}
+
+/* .bubble-colors {
+  background-color: hsla(350, 100%, 88%, 0.3);
+  background-color: #ffc2cc4d;
+  background-color: hsla(59, 100%, 88%, 0.3);
+  background-color: #fffec24d;
+  background-color: hsla(180, 100%, 88%, 0.3);
+  background-color: #c2ffff4d;
+  background-color: hsla(308, 100%, 88%, 0.3);
+  background-color: #ffc2f74d;
+  background-color: hsla(162, 100%, 88%, 0.3);
+  background-color: #c2ffed4d;
+}
+
+.metadata-backgrounds {
+  background-color: hsla(350, 100%, 88%, 1);
+  background-color: #ffc2cc;
+  background-color: hsla(59, 100%, 88%, 1);
+  background-color: #fffec2;
+  background-color: hsla(180, 100%, 88%, 1);
+  background-color: #c2ffff;
+  background-color: hsla(308, 100%, 88%, 1);
+  background-color: #ffc2f7;
+  background-color: hsla(162, 100%, 88%, 1);
+  background-color: #c2ffed;
+} */
