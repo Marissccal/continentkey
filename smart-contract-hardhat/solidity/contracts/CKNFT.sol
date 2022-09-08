@@ -38,7 +38,7 @@ contract CKNFT is ERC1155, Ownable, Pausable {
 
     constructor()
         ERC1155(
-            "https://gateway.pinata.cloud/ipfs/QmSrkUXAtEARpBhbqGq8X72N1MrhfPVEZVHeu3gCWL6VMe/{id}.json"
+            "https://gateway.pinata.cloud/ipfs/Qmca5vF9LzXSTofSWy2aCqaT4Teet8iW2GpYJTMirxmPPa/{id}.json"
         )
     {
         contractUri = "https://gateway.pinata.cloud/ipfs/QmRi4M8wDxvwiMW7RVcb71xyaTdefZuK3VDjuTiAUwYFaN"; // json contract metadata file for OpenSea
