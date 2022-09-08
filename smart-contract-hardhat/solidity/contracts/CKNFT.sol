@@ -16,15 +16,18 @@ contract CKNFT is ERC1155, Ownable, Pausable {
     uint256 public constant MAX_TOKEN_ID_PLUS_ONE = 2; // 2 tokens numbered 0 and 1 inclusive
     uint256 public WL_TIMER;
     uint256 public MAX_MINT = 20;
-    uint256 public MAX_WL_MINT = 20;
+    uint256 public max_mint_wl = 20;
+    uint256 public MAX_WL_MINT = 50;
+    
     
 
     uint16 public minted;
-
+    
     mapping(uint256 => uint256) public tokenIdToExistingSupply;
     mapping(uint256 => uint256) public tokenIdToMaxSupplyPlusOne; // set in the constructor
     mapping(address => bool) public whitelistedAddresses;
     mapping(address => uint256) public whitelistedPermit;
+    mapping(address => uint256) public mintPermit;
 
     bool private _reentrant = false;
     bool public isWhiteListActive = false;
@@ -38,7 +41,7 @@ contract CKNFT is ERC1155, Ownable, Pausable {
 
     constructor()
         ERC1155(
-            "https://gateway.pinata.cloud/ipfs/QmWe7jwdM1vr3CcrWD3pmmmr2u1qA3vH3ZoaMm5QGcRDCF/{id}.json"
+            "https://gateway.pinata.cloud/ipfs/QmdcVANW2y5S7o5nhd2ZfeYmSKqD5M6y99iR6cJcxmW31L/{id}.json"
         )
     {
         contractUri = "https://gateway.pinata.cloud/ipfs/QmRi4M8wDxvwiMW7RVcb71xyaTdefZuK3VDjuTiAUwYFaN"; // json contract metadata file for OpenSea
@@ -78,7 +81,7 @@ contract CKNFT is ERC1155, Ownable, Pausable {
     }
 
     function setWhitelistActive(bool _wlEnd) external onlyOwner {
-        WL_TIMER = block.timestamp + 15 minutes;
+        WL_TIMER = block.timestamp + 1 minutes;
         isWhiteListActive = _wlEnd;
     }
 
@@ -97,9 +100,14 @@ contract CKNFT is ERC1155, Ownable, Pausable {
         payable
         nonReentrant
     {
+        require(
+            (isWhiteListActive),
+            "whitelist is not active"
+        );
+
         // WL_Timer is here to lock access for WL only under 24h
         require(
-            (isWhiteListActive && WL_TIMER > block.timestamp),
+            (WL_TIMER > block.timestamp),
             "whitelist is finish"
         );
         require(
@@ -109,11 +117,11 @@ contract CKNFT is ERC1155, Ownable, Pausable {
         
         require(
             whitelistedPermit[msg.sender] + _amount <= MAX_WL_MINT,
-            "Only 20 Nfts by whitelisted address. "
+            "Only 50 Nfts by whitelisted address."
         );
         require(_id < MAX_TOKEN_ID_PLUS_ONE, "id must be < 2");
-        require(minted + _amount <= 40, "All tokens minted");
-        require(_amount > 0 && _amount <= MAX_MINT, "Invalid mint amount");                
+        require(minted + _amount <= 7500, "All tokens minted");
+        require(_amount > 0 && _amount <= max_mint_wl, "Invalid mint amount");                
 
         uint256 existingSupply = tokenIdToExistingSupply[_id];
 
@@ -132,8 +140,21 @@ contract CKNFT is ERC1155, Ownable, Pausable {
         _mint(msg.sender, _id, _amount, "");
     }
 
-    function mint(uint256 _id, uint256 _amount) external payable whenNotPaused {
+    function mint(uint256 _id, uint256 _amount) external payable {
+        require(
+            (WL_TIMER != 0),
+            "whitelist has not started"
+        );
+        require(
+            (WL_TIMER < block.timestamp),
+            "whitelist has not finish"
+        );        
         require(_id < MAX_TOKEN_ID_PLUS_ONE, "id must be < 2");
+
+        require(
+            mintPermit[msg.sender] + _amount <= MAX_MINT,
+            "Only 20 Nfts by address. "
+        );
 
         uint256 existingSupply = tokenIdToExistingSupply[_id];
         require(
