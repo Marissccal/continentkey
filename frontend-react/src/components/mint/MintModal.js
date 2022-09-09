@@ -43,7 +43,10 @@ const MintModal = ({
           <div className="box " style={style}>
             <div className="has-text-centered">
               <p className="is-size-2 is-size-4-mobile">
-                <span className="is-capitalized">{CKNFT.metadata.attributes[1].value}</span> the{" "}
+                <span className="is-capitalized">
+                  {CKNFT.metadata.attributes[1].value}
+                </span>{" "}
+                the{" "}
                 <span className="is-capitalized">{CKNFT.metadata.name}</span>
               </p>
               <p>
@@ -51,6 +54,12 @@ const MintModal = ({
               </p>
             </div>
             <img className="custom-mint-modal-image" src={CKNFT.image}></img>
+            <video
+              className="custom-mint-modal-video"
+              src={CKNFT.video}
+              autoPlay={true}
+              loop
+            ></video>
             <div className="is-flex is-flex-direction-column is-align-items-center">
               <div className="is-flex is-justify-content-center is-align-items-center">
                 <button
@@ -72,7 +81,11 @@ const MintModal = ({
               <p>Cost to Mint: {CKNFT_PRICE_IN_ETH * counter} + gas</p>
               <button
                 className="button mt-4"
-                disabled={counter === 0 || walletWaitingOnUser || awaitingBlockConfirmation}
+                disabled={
+                  counter === 0 ||
+                  walletWaitingOnUser ||
+                  awaitingBlockConfirmation
+                }
                 onClick={() => mint(CKNFT.tokenId, counter)}
               >
                 MINT
@@ -99,7 +112,9 @@ const MintModal = ({
           )}
         </div>
         <button
-          className={`modal-close is-large ${awaitingBlockConfirmation ? "custom-hidden" : ""}`}
+          className={`modal-close is-large ${
+            awaitingBlockConfirmation ? "custom-hidden" : ""
+          }`}
           aria-label="close"
           onClick={closeModal}
         ></button>

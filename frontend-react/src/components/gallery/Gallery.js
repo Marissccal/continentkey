@@ -5,26 +5,41 @@ import NoCknftNotification from "../alerts/NoCKNFTNotification";
 import CknftCard from "../cknftCard/CknftCard";
 
 const Gallery = (props) => {
-  const { setShowWalletModal, getOwnerCknft, gettingUserCknft, userCknftDetails, showNoCknftNotification } =
-    props;
+  const {
+    setShowWalletModal,
+    getOwnerCknft,
+    gettingUserCknft,
+    userCknftDetails,
+    showNoCknftNotification,
+  } = props;
 
   const { isWeb3Enabled } = useMoralis();
 
   return (
     <div className="background">
       <section className="section pt-3 has-text-centered">
-        <h1 className="subtitle custom-mobile-subtitle mb-5">YOUR CKNFT GALLERY</h1>        
+        <h1 className="subtitle custom-mobile-subtitle mb-5">
+          YOUR CKNFT GALLERY
+        </h1>
 
         {!isWeb3Enabled && (
-          <button className="button mb-5" onClick={() => setShowWalletModal(true)}>
+          <button
+            className="button mb-5"
+            onClick={() => setShowWalletModal(true)}
+          >
             Connect Wallet
           </button>
         )}
 
         <div>
           {isWeb3Enabled && (
-            <button className={`button mb-5 ${gettingUserCknft ? "is-loading" : ""}`} onClick={getOwnerCknft}>
-              {userCknftDetails.length === 0 ? "See Your CKNFT" : "Refresh Your CKNFT"}
+            <button
+              className={`button mb-5 ${gettingUserCknft ? "is-loading" : ""}`}
+              onClick={getOwnerCknft}
+            >
+              {userCknftDetails.length === 0
+                ? "See Your CKNFT"
+                : "Refresh Your CKNFT"}
             </button>
           )}
         </div>
