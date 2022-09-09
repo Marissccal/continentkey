@@ -17,7 +17,7 @@ const MintCard = ({
   setShowMintModal,
 }) => {
   /* const style = { backgroundColor: `#${CKNFT.metadata.background_color}` }; */
-  const style = { backgroundColor: "transparent" };
+  const style = { backgroundColor: "black", border: "thick solid #000" };
 
   const { isWeb3Enabled, chainId } = useMoralis();
 
@@ -33,7 +33,7 @@ const MintCard = ({
         <div className={`card-image`}>
           <figure
             style={style}
-            className={`image is-3by2${
+            className={`image is-3by4${
               existingCKNFTSupply &&
               existingCKNFTSupply[CKNFT.tokenId] - CKNFT.maxSupply === 0
                 ? "custom-sold-out"
@@ -72,7 +72,7 @@ const MintCard = ({
             ))}
 
           {!isWeb3Enabled && (
-            <p className="custom-num-minted">
+            <p className="custom-num-minted1">
               connect to see availability and mint
             </p>
           )}

@@ -1,7 +1,8 @@
 .video {
-  width: 100%;
-  top: -110px;
-  position: relative;
+  width: 98%;
+  left: 2.5px;
+  top: 140px;
+  position: absolute;
 }
 
 .img-mint {

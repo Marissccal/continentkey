@@ -181,10 +181,20 @@
 .custom-num-minted {
   z-index: 3;
   position: absolute;
-  top: 0.1em;
+  top: 0.3em;
+  font-weight: bold;
   color: white;
-  right: 16.65em;
-  background-color: rgba(1, 14, 14, 0.914);
+  right: 15.75em;
+  background-color: rgb(2, 2, 2);
+}
+.custom-num-minted1 {
+  z-index: 5;
+  position: absolute;
+  top: 0.3em;
+  font-weight: bold;
+  color: white;
+  right: 14.9em;
+  background-color: rgba(1, 14, 14, 0.959);
 }
 
 .custom-mint-modal-image {
@@ -206,8 +216,8 @@
 .custom-mint-modal-video2 {
   position: absolute;
   top: 0%;
-  left: 0;
-  width: 100%;
+  left: 6.6px;
+  width: 96%;
   height: 100%;
   max-height: 400%;
   display: flex;
@@ -307,10 +317,11 @@
 .custom-opensea-link {
   z-index: 3;
   position: absolute;
-  top: 0.1em;
-  right: 0.2em;
+  top: 0.3em;
+  right: 0.3em;
   background-color: rgba(1, 14, 14, 0.914);
   color: white;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 500px) {

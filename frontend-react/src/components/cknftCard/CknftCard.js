@@ -25,15 +25,13 @@ const CknftCard = ({ cknftDetails }) => {
     .split("")
     .splice(7)
     .join("")}`;
-  const style = {
-    backgroundColor: `#${cknftDetails.uriJSON.background_color}`,
-  };
+  const style = { backgroundColor: "black", border: "thick solid #000" };
 
   return (
     <>
       <div className="card custom-card">
         <div className="card-image">
-          <figure /* style={style} */ className="image is-3by4">
+          <figure style={style} className="image is-3by4">
             {/*onError in case ipfs img url does not work */}
             <img
               src={imgURI}
