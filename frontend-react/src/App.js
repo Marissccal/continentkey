@@ -165,7 +165,7 @@ function App() {
 
   async function mint(id, numCknft) {
     try {
-      const ethToPay = CKNFT_PRICE_IN_ETH * numCknft; // to fixed?
+      const ethToPay = (CKNFT_PRICE_IN_ETH * numCknft).toFixed(18); // to fixed?
 
       const options = {
         contractAddress: CKNFT_ADDRESS,

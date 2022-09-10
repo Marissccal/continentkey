@@ -35,6 +35,23 @@ const MintModal = ({
     handleClose();
   }
 
+  let number = CKNFT_PRICE_IN_ETH;
+  let decimalNumbers = number.toString();
+
+  //se toman los números después del punto
+  decimalNumbers = decimalNumbers.substr(
+    decimalNumbers.indexOf(".") + 1,
+    decimalNumbers.length - 1
+  );
+
+  let decimalNumbersLength = decimalNumbers.length;
+
+  //se eleva el 10 a la cantidad de números decimales que hay
+  //para tener un numero con la misma cantidad de ceros que decimales
+  let fixNumber = 10 ** decimalNumbersLength;
+
+  /* total = Math.round(counter * 100 * fixNumber) / fixNumber; */
+  /* .toFixed(2) */
   return (
     <>
       <div id="modal" className="modal is-active">
@@ -78,7 +95,10 @@ const MintModal = ({
                   ▲
                 </button>
               </div>
-              <p>Cost to Mint: {CKNFT_PRICE_IN_ETH * counter} + gas</p>
+              <p>
+                Cost to Mint:{" "}
+                {Math.round(counter * 0.0001 * fixNumber) / fixNumber} + gas
+              </p>
               <button
                 className="button mt-4"
                 disabled={

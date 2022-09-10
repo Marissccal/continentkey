@@ -15,7 +15,7 @@ contract CKNFT is ERC1155, Ownable, Pausable {
     uint256 public constant CKNFT_PRICE = 0.0001 ether;
     uint256 public constant MAX_TOKEN_ID_PLUS_ONE = 2; // 2 tokens numbered 0 and 1 inclusive
     uint256 public WL_TIMER;
-    uint256 public MAX_MINT = 20;
+    uint256 public MAX_MINT = 30;
     uint256 public max_mint_wl = 30;
     uint256 public MAX_WL_MINT = 50;   
 
@@ -39,7 +39,7 @@ contract CKNFT is ERC1155, Ownable, Pausable {
 
     constructor()
         ERC1155(
-            "https://gateway.pinata.cloud/ipfs/QmSrkUXAtEARpBhbqGq8X72N1MrhfPVEZVHeu3gCWL6VMe/{id}.json"
+            "https://gateway.pinata.cloud/ipfs/QmZa7WuNDN12BxLSxrAfPXKT6eEvttroXxaCxXpjiRTwhw/{id}.json"
         )
     {
         contractUri = "https://gateway.pinata.cloud/ipfs/QmRi4M8wDxvwiMW7RVcb71xyaTdefZuK3VDjuTiAUwYFaN"; // json contract metadata file for OpenSea
@@ -79,7 +79,7 @@ contract CKNFT is ERC1155, Ownable, Pausable {
     }
 
     function setWhitelistActive(bool _wlEnd) external onlyOwner {
-        WL_TIMER = block.timestamp + 1 minutes;
+        WL_TIMER = block.timestamp + 5 minutes;
         isWhiteListActive = _wlEnd;
     }
 
