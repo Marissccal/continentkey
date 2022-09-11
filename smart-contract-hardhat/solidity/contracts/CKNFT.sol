@@ -17,7 +17,7 @@ contract CKNFT is ERC1155, Ownable, Pausable {
     uint256 public WL_TIMER;
     uint256 public MAX_MINT = 30;
     uint256 public max_mint_wl = 30;
-    uint256 public MAX_WL_MINT = 50;   
+    uint256 public MAX_WL_MINT = 30;   
 
     
     
@@ -25,7 +25,7 @@ contract CKNFT is ERC1155, Ownable, Pausable {
     mapping(uint256 => uint256) public tokenIdToMaxSupplyPlusOne; // set in the constructor
     mapping(address => bool) public whitelistedAddresses;
     mapping(address => uint256) public whitelistedPermit;
-    //mapping(address => uint256) public mintPermit;
+    mapping(address => uint256) public mintPermit;
 
     bool private _reentrant = false;
     bool public isWhiteListActive = false;
@@ -44,8 +44,8 @@ contract CKNFT is ERC1155, Ownable, Pausable {
     {
         contractUri = "https://gateway.pinata.cloud/ipfs/QmRi4M8wDxvwiMW7RVcb71xyaTdefZuK3VDjuTiAUwYFaN"; // json contract metadata file for OpenSea
 
-        tokenIdToMaxSupplyPlusOne[0] = 10000;
-        tokenIdToMaxSupplyPlusOne[1] = 10000;
+        tokenIdToMaxSupplyPlusOne[0] = 100;
+        tokenIdToMaxSupplyPlusOne[1] = 100;
         
         Pausable._pause();
         uint256[] memory _ids = new uint256[](2);
@@ -115,10 +115,10 @@ contract CKNFT is ERC1155, Ownable, Pausable {
         
         require(
             whitelistedPermit[msg.sender] + _amount <= MAX_WL_MINT,
-            "Only 50 Nfts by whitelisted address."
+            "Only 30 Nfts by whitelisted address."
         );
         require(_id < MAX_TOKEN_ID_PLUS_ONE, "id must be < 2");
-        require(tokenIdToExistingSupply[_id] + _amount <= 7500, "All tokens minted");
+        require(tokenIdToExistingSupply[_id] + _amount <= 60, "All tokens minted");
         require(_amount > 0 && _amount <= max_mint_wl, "Invalid mint amount");                
 
         uint256 existingSupply = tokenIdToExistingSupply[_id];
@@ -150,8 +150,8 @@ contract CKNFT is ERC1155, Ownable, Pausable {
         require(_id < MAX_TOKEN_ID_PLUS_ONE, "id must be < 2");
 
         require(
-            whitelistedPermit[msg.sender] + _amount <= MAX_MINT,
-            "Only 20 Nfts by address. "
+            mintPermit[msg.sender] + _amount <= MAX_MINT,
+            "Only 30 Nfts by address. "
         );
 
         uint256 existingSupply = tokenIdToExistingSupply[_id];
@@ -168,7 +168,7 @@ contract CKNFT is ERC1155, Ownable, Pausable {
         tokenIdToExistingSupply[_id] = existingSupply;
         for (uint256 i = 0; i < _amount; i++) {
                         
-            whitelistedPermit[msg.sender]++;   
+            mintPermit[msg.sender]++;   
         }
         _mint(msg.sender, _id, _amount, "");
     }

@@ -9,12 +9,12 @@ export const cknftInfo = [
     tokenId: 0,
     metadata: cknft_0Metadata,
     image: cknft_0Img,
-    maxSupply: 10000,
+    maxSupply: 100,
   },
   {
     tokenId: 1,
     metadata: cknft_1Metadata,
     video: cknft_1Img,
-    maxSupply: 10000,
+    maxSupply: 100,
   },
 ];
