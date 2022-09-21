@@ -21,7 +21,7 @@ const fallBackImages = [
 ];
 
 const CknftCard = ({ cknftDetails }) => {
-  const imgURI = `https://gateway.pinata.cloud/ipfs/${cknftDetails.uriJSON.image
+  const imgURI = `https://${cknftDetails.uriJSON.image
     .split("")
     .splice(7)
     .join("")}`;

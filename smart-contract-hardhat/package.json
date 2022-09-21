@@ -20,7 +20,7 @@
     {
       "name": "Mariscal",
       "url": "https://github.com/Marissccal"
-    }    
+    }
   ],
   "files": [
     "solidity/contracts",
@@ -69,7 +69,8 @@
     "eth-gas-reporter/colors": "1.4.0"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "4.5.0"
+    "@openzeppelin/contracts": "4.5.0",
+    "defender-relay-client": "^1.31.1"
   },
   "devDependencies": {
     "@codechecks/client": "0.1.12",

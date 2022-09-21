@@ -175,7 +175,7 @@ function App() {
       setWalletWaitingOnUser(true);
       const mintTx = await Moralis.executeFunction({
         ...options,
-        functionName: "mint",
+        functionName: "publicMint",
         params: { _id: id, _amount: numCknft },
         msgValue: ethers.utils.parseEther(ethToPay.toString()),
       });

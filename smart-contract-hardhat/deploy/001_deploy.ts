@@ -15,12 +15,12 @@ const deployFunction: DeployFunction = async function (hre: HardhatRuntimeEnviro
     log: true,
   });
 
-  if (hre.network.name !== 'hardhat' && (await shouldVerifyContract(cknft))) {
+  /*if (hre.network.name !== 'hardhat' && (await shouldVerifyContract(cknft))) {
     await hre.run('verify:verify', {
       address: cknft.address,
       //constructorArguments: cknftHelperArgs,
     });
-  }
+  }*/
 };
 
 deployFunction.tags = ['CKNFT', 'testnet'];

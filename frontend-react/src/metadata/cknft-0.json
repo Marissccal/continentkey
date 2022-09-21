@@ -1,7 +1,7 @@
 {
   "name": "cknft-0",
   "description": "Lorem ipsum",
-  "image": "ipfs://QmR5wFuBXBwseTc6ysji6JTWiqjFLZGgApHpF7cZXgkUhG",
+  "image": "https://continentkey.mypinata.cloud/ipfs/QmR5wFuBXBwseTc6ysji6JTWiqjFLZGgApHpF7cZXgkUhG",
   "background_color": "fffec2",
   "attributes": [
     {
